@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  relationapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: relationapp:latest
+    ports:
+      - "8080:80"  # Container port 80, Host port 8080
+      - "8081:8081" # Container port 8081, Host port 8081
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  # .NET mühiti
+    volumes:
+      - ./logs:/app/logs  # (isteğe bağlı) log faylları üçün konteyneri hosta bağla
+    restart: always  # Xidmət dayanarsa avtomatik olaraq yenidən başlasın
+
