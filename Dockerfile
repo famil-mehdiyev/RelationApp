@@ -53,7 +53,6 @@ RUN dotnet build "OneToManyRelation.csproj" -c Release -o /app/build
 # Tətbiqi /app/publish qovluğuna dərc et
 FROM build AS publish
 RUN dotnet publish "OneToManyRelation.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
 # Dərc edilmiş tətbiq ilə son imici müəyyən et
 FROM base AS final
 WORKDIR /app
