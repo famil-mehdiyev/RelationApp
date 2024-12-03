@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OneToManyRelation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86fd3ab713237bf1b4534700a83420745127243d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5beae9ff2bd1ad88bd3254c2eecf177d8c11c492")]
 [assembly: System.Reflection.AssemblyProductAttribute("OneToManyRelation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OneToManyRelation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
