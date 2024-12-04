@@ -11,7 +11,7 @@ WORKDIR /src
 
 # Copy the .csproj file and restore dependencies (via dotnet restore)
 COPY ["OneToManyRelation.csproj", "OneToManyRelation/"]
-RUN dotnet restore "./OneToManyRelation/OneToManyRelation.csproj"
+RUN dotnet restore ["OneToManyRelation/OneToManyRelation.csproj"]
 
 # Copy he entire project and build the application
 
