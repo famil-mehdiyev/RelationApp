@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RelationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

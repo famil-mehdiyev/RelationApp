@@ -14,10 +14,10 @@ namespace OneToManyRelation.Controllers
         private readonly IMapper _mapper;
 
 
-        public ProductController(RelationContext relationContext, IMapper mapper)
+        public ProductController(RelationContext relationContext/*, IMapper mapper*/)
         {
             _context = relationContext;
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpGet("all")]
@@ -34,25 +34,25 @@ namespace OneToManyRelation.Controllers
 
         }
 
-        [HttpPost("Add")]
-        public IActionResult Create(ProductDto productDto)
-        {
-            Product product = _mapper.Map<Product>(productDto);
-            //Product product1 = new Product()
-            //{
-            //    Name = productDto.Name,
-            //    ManufactureYear = productDto.ManufactureYear,
-            //    ManufacturingCountry = productDto.ManufacturingCountry,
+        //[HttpPost("Add")]
+        //public IActionResult Create(ProductDto productDto)
+        //{
+        //    Product product = _mapper.Map<Product>(productDto);
+        //    //Product product1 = new Product()
+        //    //{
+        //    //    Name = productDto.Name,
+        //    //    ManufactureYear = productDto.ManufactureYear,
+        //    //    ManufacturingCountry = productDto.ManufacturingCountry,
 
-            //};
+        //    //};
 
-            //var data = _context.Products.Add(product);
-            _context.Add(product);
+        //    //var data = _context.Products.Add(product);
+        //    _context.Add(product);
             
-            _context.SaveChanges();
+        //    _context.SaveChanges();
 
-            return StatusCode(201,product);
-        }
+        //    return StatusCode(201,product);
+        //}
 
 
 

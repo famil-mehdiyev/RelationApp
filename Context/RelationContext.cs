@@ -14,9 +14,15 @@ namespace OneToManyRelation.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasOne(x => x.Categories).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
-            //modelBuilder.Entity<Product>().HasQueryFilter(x=>x.);
+            // Product ilə Category arasında Many-to-One əlaqəsinin qurulması
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Categories) // Bir Product bir Category ilə əlaqəlidir
+                .WithMany(c => c.Products) // Bir Category-nin çoxsaylı Products-u var
+                .HasForeignKey(p => p.CategoryId); // Foreign key olaraq CategoryId istifadə olunur
 
+            // Burada başqa əlaqələr, məsələn, soft delete tətbiqi, query filter və s. əlavə edilə bilər
+            // modelBuilder.Entity<Product>().HasQueryFilter(x => x.IsActive);
         }
+
     }
 }

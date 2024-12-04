@@ -1,5 +1,5 @@
 ﻿# Use the official image for ASP.NET Core runtime as the base image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 
 EXPOSE 8080

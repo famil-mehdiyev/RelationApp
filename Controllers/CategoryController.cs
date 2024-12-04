@@ -15,17 +15,17 @@ namespace OneToManyRelation.Controllers
         private readonly RelationContext _context;
         private readonly IMapper _mapper;
 
-        public CategoryController(RelationContext context, IMapper mapper)
+        public CategoryController(RelationContext context/*, IMapper mapper*/)
         {
             _context = context;
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpGet("All")]
         public IActionResult GetAll()
         {
-
-            List<Category> categories = _context.Categories.Include(c => c.Products).ToList();
+            string[] categories = { "ferid"};
+            //List<Category> categories = _context.Categories.Include(c => c.Products).ToList();
             //List<Category> categories = _context.Categories
             //                         .Include(c => c.Products)
             //                         .Where(c => c.Products.Any(p => p.Name == "Mercedes"))
@@ -54,15 +54,15 @@ namespace OneToManyRelation.Controllers
             return StatusCode(201, gettingData);
         }
 
-        [HttpPost("Add")]
-        public IActionResult Create(CategoryDto dto)
-        {
-            Category category = _mapper.Map<Category>(dto);
-            _context.Add(category);
-            _context.SaveChanges();
+        //[HttpPost("Add")]
+        //public IActionResult Create(CategoryDto dto)
+        //{
+        //    Category category = _mapper.Map<Category>(dto);
+        //    _context.Add(category);
+        //    _context.SaveChanges();
 
-            return StatusCode(201, category);
-        }
+        //    return StatusCode(201, category);
+        //}
 
         //[HttpPut("update")]
 
