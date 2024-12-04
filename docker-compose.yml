@@ -10,6 +10,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development  # .NET mühiti
     volumes:
-      - ./logs:/app/logs  # (isteğe bağlı) log faylları üçün konteyneri hosta bağla
+      - ./logs:/app/logs  
     restart: always  # Xidmət dayanarsa avtomatik olaraq yenidən başlasın
 
