@@ -149,3 +149,4 @@ C:\app\build\OneToManyRelation.deps.json
 C:\app\build\OneToManyRelation.runtimeconfig.json
 C:\app\build\OneToManyRelation.dll
 C:\app\build\OneToManyRelation.pdb
+C:\Users\Abbas.Quliyev\source\repos\OneToManyRelation\OneToManyRelation\bin\Release\net8.0\OneToManyRelation.exe

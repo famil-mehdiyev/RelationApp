@@ -13,7 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RelationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-//builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+
+builder.Services.AddDbContext<PostgreSqlDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
+
+builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -24,7 +28,7 @@ builder.Services.AddControllers()
 //{
 //    options.HttpsPort = 8080;  
 //});
-//builder.WebHost.UseUrls("http://0.0.0.0:80");
+//builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
 
 //builder.Services.AddControllers()
@@ -48,5 +52,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/", () => "Hello World");
 
 app.Run();

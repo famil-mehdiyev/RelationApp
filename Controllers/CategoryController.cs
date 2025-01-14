@@ -8,24 +8,25 @@ using OneToManyRelation.Model;
 namespace OneToManyRelation.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-
+        private readonly PostgreSqlDbContext _dbContext;    
         private readonly RelationContext _context;
         private readonly IMapper _mapper;
 
-        public CategoryController(RelationContext context/*, IMapper mapper*/)
+        public CategoryController(PostgreSqlDbContext dbContext,RelationContext context, IMapper mapper)
         {
+            _dbContext = dbContext;
             _context = context;
-            //_mapper = mapper;
+            _mapper = mapper;
         }
 
         [HttpGet("All")]
         public IActionResult GetAll()
         {
-            string[] categories = { "ferid"};
-            //List<Category> categories = _context.Categories.Include(c => c.Products).ToList();
+          
+            List<Category> categories = _context.Categories.Include(c => c.Products).ToList();
             //List<Category> categories = _context.Categories
             //                         .Include(c => c.Products)
             //                         .Where(c => c.Products.Any(p => p.Name == "Mercedes"))
@@ -45,7 +46,8 @@ namespace OneToManyRelation.Controllers
         public IActionResult GetById(int id)
         {
 
-            var gettingData = _context.Categories.FirstOrDefault(x=>x.Id==id);
+            var gettingData = _dbContext.Categories.FirstOrDefault(x=>x.Id==id);
+          
 
             if (gettingData == null)
             {
@@ -54,15 +56,15 @@ namespace OneToManyRelation.Controllers
             return StatusCode(201, gettingData);
         }
 
-        //[HttpPost("Add")]
-        //public IActionResult Create(CategoryDto dto)
-        //{
-        //    Category category = _mapper.Map<Category>(dto);
-        //    _context.Add(category);
-        //    _context.SaveChanges();
+        [HttpPost("Add")]
+        public IActionResult Create(CategoryDto dto)
+        {
+            Category category = _mapper.Map<Category>(dto);
+            _dbContext.Add(category);
+            _dbContext.SaveChanges();
 
-        //    return StatusCode(201, category);
-        //}
+            return StatusCode(201, category);
+        }
 
         //[HttpPut("update")]
 
